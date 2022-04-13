@@ -232,7 +232,7 @@ class ProjectTaskMaterial(models.Model):
         if "employee_id" in self.env["account.analytic.line"]._fields:
             vals["employee_id"] = (
                 self.env["hr.employee"]
-                .search([("user_id", "=", self.task_id.user_id.id)], limit=1)
+                .search([("user_id", "=", self.task_id.manager_id.id)], limit=1)
                 .id
             )
         res.update(vals)
